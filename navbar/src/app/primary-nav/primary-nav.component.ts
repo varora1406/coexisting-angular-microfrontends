@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar-primary-nav',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrimaryNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly router: Router) { }
 
   ngOnInit() {
+  }
+
+  route(path) {
+    const random = Math.random().toString(36).substring(7)
+    this.router.navigate([path], {
+      queryParams: {
+        random
+      }
+    });
   }
 
 }
